@@ -1,0 +1,353 @@
+# =============================================================================
+#                                Chuleta Git
+# =============================================================================
+#
+#
+# Comandos básicos
+# ================
+#
+# Inicializar repositorio Git:
+#     git init
+#
+# Clonar un repositorio remoto:
+#     git clone <ruta_repo>
+#
+#     Ejemplos (SSH, HTTPS y directorio local, respectivamente):
+#         git clone git@github.com:srus/git-cheatsheet.git
+#         git clone https://github.com/srus/git-cheatsheet.git
+#         git clone /home/sergio/repos/git-cheatsheet.git
+#
+# Estado del repositorio:
+#     git status
+#
+# Nombre de la rama actual:
+#     git branch
+#
+# Añadir nuevos archivos al repositorio:
+#     git add <file1> <file2>
+#
+#     Ejemplo: añadir todos los archivos:
+#         git add *
+#
+# Modificaciones en el repositorio:
+#     git diff
+#
+# Commit con mensaje corto:
+#     git commit -am "mensaje"
+#
+# Commit con mensaje largo:
+#     git commit -a
+#
+# Historial de commits:
+#     git log
+#
+# Eliminar archivos del repositorio:
+#     git rm <file1> <file2>
+#
+# Actualizar el repositorio con los archivos eliminados (evita tener que hacer
+# `git rm file1 file2 file3`):
+#     git add -u
+#
+# Crear una rama:
+#     git branch <nombre_rama>
+#
+# Cambiar de rama:
+#     git checkout <nombre_rama>
+#
+# Comparar dos ramas:
+#     git diff <rama1> <rama2>
+#
+# Incorporar (fusionar) una rama en la rama actual:
+#     git merge <nombre_rama>
+#
+# Traer los cambios de una rama remota (sin actualizar ninguna rama local):
+#     git fetch <repo> <nombre_rama>
+#
+#     Ejemplo:
+#         git fetch origin master
+#
+# Traer los cambios de todas las ramas remotas, sin actualizar ninguna rama
+# local:
+#     git fetch --all
+#
+# Comparar los cambios entre una rama local y otra remota:
+#     git diff <rama_local> <repo>/<rama_remota>
+#
+#     Ejemplo:
+#         git diff master origin/master
+#
+# Incorporar (fusionar) una rama remota en la rama actual:
+#     git merge <rama_remota>
+#
+#     Ejemplo:
+#         git merge origin/master
+#
+# Actualizar (fetch + merge) la rama actual con los cambios de una rama remota:
+#     git pull <repo> <nombre_rama>
+#
+#     Ejemplo: actualizar la rama actual con los últimos cambios de la rama
+#     "master" del repositorio remoto "origin":
+#         git pull origin master
+#
+# Enviar (fusionar) la rama actual en otra de un repositorio remoto (creando
+# una nueva rama remota en caso de que no existiera):
+#     git push <repo> <nombre_rama>
+#
+#     Ejemplo:
+#         git push origin master
+#
+# Añadir un repositorio remoto:
+#     git remote add <repo> <user>@<host>:<ruta_repo>
+#
+#     Ejemplo:
+#         git remote add github git@github.com:srus/git-cheatsheet.git
+#
+# Eliminar un repositorio remoto:
+#     git remote rm <repo>
+#
+# Info del repositorio local:
+#     git config -l
+#
+# Info de los repositorios remotos:
+#     git remote -v
+#
+# Info detallada de un repositorio remoto:
+#     git remote show <repo>
+#
+#
+# Ramas
+# =====
+#
+# Crear una rama local:
+#     git branch <nombre_rama>
+#
+# Cambiar de rama:
+#     git checkout <nombre_rama>
+#
+# Crear una rama y cambiarse a ésta:
+#     git checkout -b <nombre_rama>
+#
+# Crear una rama que apunte a otra remota:
+#     git branch <nombre_rama> <repo>/<nombre_rama>
+#
+# Crear una rama que apunte a otra remota y cambiarse a esta inmediatamente:
+#     git checkout -b <nombre_rama> <repo>/<nombre_rama>
+#
+# Incorporar (fusionar) una rama en la actual:
+#     git merge <nombre_rama>
+#
+# Enviar (fusionar) la rama actual en otra de un repositorio remoto (o crear
+# una nueva rama remota en caso de que no existiera):
+#     git push <repo> <nombre_rama>
+#
+#     Ejemplo:
+#         git push origin master
+#
+#     Con la opción "-u" podemos indicar que la rama actual es la principal,
+#     evitando tener que indicar el repositorio y la rama en cada push/pull:
+#         git push -u origin master
+#     A partir de ahora sólo necesitaremos escribir `git push` y `git pull`.
+#
+# Listar las ramas locales:
+#     git branch
+#
+# Listar las ramas remotas:
+#     git branch -r
+#
+# Listar todas las ramas:
+#     git branch -a
+#
+# Renombrar una rama:
+#     git branch -m <nombre_actual> <nombre_nuevo>
+#
+# Eliminar una rama:
+#     git branch -d <nombre_rama>
+#
+# Eliminar una rama remota (en el repositorio local):
+#     git branch -r -d <repo>/<nombre_rama>
+#
+# Eliminar una rama remota (en el repositorio remoto):
+#     git push <repo> :<nombre_rama>
+#
+#     En las últimas versiones de Git, por defecto se impide hacer push a una
+#     rama remota que no admita "fast-forward" (aunque se use "--force"), por
+#     ejemplo en el caso de que se trate de una rama "huérfana" cuya historia
+#     ha sido modificada. Esto se hace mediante una variable que por seguridad
+#     se configura a un valor por defecto. Esta variable se puede modificar (de
+#     forma temporal). Para ello hay que moverse al directorio donde reside el
+#     repositorio que se quiere configurar y poner:
+#         git config receive.denyDeleteCurrent ignore
+#
+#     Ahora ya se puede hacer push sobre cualquier rama remota.
+#     Para volver a activar la protección:
+#         git config receive.denyDeleteCurrent refuse
+#
+# Eliminar las ramas remotas en el repositorio local que ya no existen en el
+# repositorio remoto. Usar "--dry-run" para hacer una simulación.
+#     git remote prune [--dry-run] <repo>
+#
+#
+# Eliminación de archivos / Deshaciendo cambios
+# =============================================
+#
+# Deshacer los cambios de un commit:
+#     git revert <HASH>
+#
+# Descartar cambios y volver a una versión concreta de un archivo:
+#     git checkout <HASH> <ruta_archivo>
+#
+#     Ejemplos:
+#         git checkout -- src/foobar.txt      # última versión
+#         git checkout HEAD src/foobar.txt    # última versión
+#         git checkout HEAD^ src/foobar.txt   # penúltima versión
+#         git checkout 123456 src/foobar.txt  # versión con commit 123456
+#
+# Descartar todos los cambios y volver a una versión concreta del repositorio:
+#     git reset --hard <HASH>
+#
+#     ¡Cuidado! ¡Esto elimina los commits más recientes!
+#     Sólo se debe usar con los commits anteriores a un `git push`, ya que
+#     en otro caso no podremos hacer push sobre el repositorio remoto.
+#
+# Forzar el push en el repositorio remoto (NO RECOMENDABLE):
+#     git push origin +master
+#
+# Recuperar commits eliminados:
+#     git reflog
+#
+#     Una vez identificado el commit a recuperar, hacer:
+#         git reset --hard <HASH>
+#
+#     Por defecto reflog almacena los commits de los últimos 90 días. A partir
+#     de esa fecha git-gc eliminará los commits de más de 90 días.
+#
+#     Podemos modificar la duración con:
+#         git config --add gc.reflogexpire [30.days | 30.minutes | 30.seconds]
+#
+#
+# Manipulando commits
+# ===================
+#
+# Modificar el mensaje del último commit:
+#     git commit --amend
+#
+# Commit con mensaje corto saltándose el hook "pre-commit":
+#     git commit -am "mensaje" --no-verify
+#
+# Modificar la historia (commits) del repositorio local, por ejemplo para unir
+# (squash) varios commits, o editar (reword) los mensajes, etc.
+# ¡Sólo debe usarse `rebase` si aún no se ha hecho push al repositorio remoto!
+#     git rebase -i <HASH>
+#
+# Guardar temporalmente los cambios actuales sin hacer commit y volver a la
+# última versión del repositorio:
+#     git stash
+#
+# Recuperar los cambios temporalmente guardados:
+#     git stash apply
+#
+# Limpiar el "stash":
+#     git stash clear
+#
+# Aplicar los cambios introducidos por uno o varios commits creando un
+# nuevo commit:
+#     git cherry-pick <HASH>
+#
+# Crear "parches" con los cambios en la rama actual respecto de <ID>, donde
+# <ID> puede ser un commit o el nombre de una rama. Esto genera un archivo
+# "patch" por cada commit, con el formato 00XX-<mensaje_commit>.patch:
+#     git format-patch <ID>
+#
+# Aplicar todos los parches almacenados en un directorio a la rama actual.
+# Esto crea un commit por cada parche.
+#     git am <ruta_directorio>/00*
+#
+#
+# Etiquetas (tags)
+# ================
+#
+# Etiquetar un commit:
+#     git tag <nombre_etiqueta>
+#
+# Eliminar una etiqueta:
+#     git tag -d <nombre_etiqueta>
+#
+# Enviar etiquetas al repositorio remoto:
+#     git push <repo> --tags
+#
+# Eliminar una etiqueta en el repositorio remoto:
+# git push <repo> :refs/tags/<nombre_etiqueta>
+#
+#
+# Submódulos
+# ==========
+#
+# Añadir un repositorio Git como un submódulo:
+#     git submodule add <ruta_a_submódulo> <nombre_submódulo>
+#
+# Clonar un proyecto que contiene submódulos:
+#     git clone --recursive <repo>
+#
+# Hacer que `git diff` muestre los cambios de los submódulos:
+#     git config [--global] diff.submodule log
+#
+# Mostrar resumen de cambios (commits) en los submódulos:
+#     git config [--global] status.submodulesummary 1
+#
+# Actualizar submódulo(s):
+#     git submodule update --remote --merge [<nombre_submódulo>]
+#
+# Hacer un `git push` comprobando antes que todos los submódulos estén ya
+# sincronizados con sus respectivos repositorios remotos:
+#     git push --recurse-submodules=check <repo> <nombre_rama>
+#
+#
+# Configuración de Git
+# ====================
+#
+# Para configuración específica del proyecto, ignorar la opción `--global`.
+#
+# Configuración del nombre:
+#     git config [--global] user.name "Sergio Rus"
+#
+# Configuración del email:
+#     git config [--global] user.email sergio@example.com
+#
+# Activar el color en los diff:
+#     git config [--global] color.diff auto
+#
+# Añadir un alias:
+#     git config [--global] alias.supdate 'submodule update --remote --merge'
+#
+#
+# Configuración de un repositorio remoto privado (acceso vía SSH)
+# ===============================================================
+#
+# Situarse en el directorio del proyecto y poner:
+#     git clone --bare . <ruta_repo_remoto>
+#
+# A partir de aquí el proyecto se podrá descargar con:
+#     git clone <user>@<host>:<ruta_repo_remoto>
+#
+#
+# `.gitignore` (para ignorar archivos en Git)
+# ===========================================
+#
+# Los archivos sólo se ignoran si previamente no se han añadido al
+# "repositorio", es decir, deben aparecer como "untracked files".
+#
+# Ejemplo de archivo ".gitignore":
+#
+#    # Ignorar los siguientes archivos
+#    foobar.txt
+#    proyecto/foobar.txt
+#    proyecto/.foobar
+#
+#    # Ignorar archivos "log"
+#    .log
+#
+#    # No ignorar "foobar.log"
+#    !foobar.log
+#
+#    # Ignorar el directorio "tmp"
+#    tmp

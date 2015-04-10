@@ -1,2 +1,3 @@
 # git-cheatsheet
-Some useful Git commands
+
+Some useful Git commands.
