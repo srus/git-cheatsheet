@@ -20,6 +20,9 @@
 # Estado del repositorio:
 #     git status
 #
+# Info del repositorio:
+#     git config -l
+#
 # Nombre de la rama actual:
 #     git branch
 #
@@ -105,8 +108,8 @@
 # Eliminar un repositorio remoto:
 #     git remote rm <repo>
 #
-# Info del repositorio local:
-#     git config -l
+# Renombrar un repositorio remoto:
+#     git remote rename <nombre_actual> <nombre_nuevo>
 #
 # Info de los repositorios remotos:
 #     git remote -v
@@ -143,10 +146,10 @@
 #     Ejemplo:
 #         git push origin master
 #
-#     Con la opción "-u" podemos indicar que la rama actual es la principal,
-#     evitando tener que indicar el repositorio y la rama en cada push/pull:
+#     Con la opción "-u" podemos indicar qué repositorio es el principal para
+#     la rama actual, evitando tener que indicar el repositorio y la rama en
+#     cada push/pull, pudiendo escribir simplemente `git push` y `git pull`:
 #         git push -u origin master
-#     A partir de ahora sólo necesitaremos escribir `git push` y `git pull`.
 #
 # Listar las ramas locales:
 #     git branch
@@ -159,6 +162,11 @@
 #
 # Renombrar una rama:
 #     git branch -m <nombre_actual> <nombre_nuevo>
+#
+# Establecer el repositorio principal para la rama actual, lo que evita tener
+# que indicar el repositorio y la rama en cada push/pull, pudiendo escribir
+# simplemente `git push` y `git pull`:
+#     git branch -u <repo>/<nombre_rama>
 #
 # Eliminar una rama:
 #     git branch -d <nombre_rama>
@@ -192,6 +200,11 @@
 #
 # Deshacer los cambios de un commit:
 #     git revert <HASH>
+#
+# Deshacer los cambios de los últimos 3 commits. Con la opción "--no-commit"
+# crea un único commit con todos los cambios a deshacer. Otra opción es usar el
+# ID de los commits:
+#     git revert --no-commit HEAD~3..HEAD
 #
 # Descartar cambios y volver a una versión concreta de un archivo:
 #     git checkout <HASH> <ruta_archivo>
