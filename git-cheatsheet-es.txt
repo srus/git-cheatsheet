@@ -29,16 +29,18 @@
 # Añadir nuevos archivos al repositorio:
 #     git add <file1> <file2>
 #
-#     Ejemplo: añadir todos los archivos:
+#     Ejemplo: Añadir todos los archivos:
 #         git add *
 #
 # Modificaciones en el repositorio:
 #     git diff
 #
-# Commit con mensaje corto:
-#     git commit -am "mensaje"
+# Commit con mensaje corto (la opción `-a` para añadir los cambios al "index" o
+# "staging area"):
+#     git commit -a -m "Resumen del commit"
 #
-# Commit con mensaje largo:
+# Commit con mensaje largo (la opción `-a` para añadir los cambios al "index" o
+# "staging area"):
 #     git commit -a
 #
 # Historial de commits:
@@ -246,6 +248,21 @@
 #
 # Commit con mensaje corto saltándose el hook "pre-commit":
 #     git commit -am "mensaje" --no-verify
+#
+# Abrir una sesión interactiva para manipular los cambios actuales. Por ejemplo
+# para dividir los cambios en varios commits:
+#
+#     git add -p
+#
+#     Ejemplo de sesión para dividir los cambios en 2 commits:
+#         > git add -p
+#         > Stage this hunk [y,n,q,a,d,/,s,e,?]? s
+#         >     => Split into 2 hunks.
+#         >     => @@ -1,3 +1,2 @@
+#         > Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]? y
+#         > Stage this hunk [y,n,q,a,d,/,K,g,e,?]? q
+#         > git commit -m "Cambios 1"
+#         > git commit -m "Cambios 2"  # commit del resto de cambios
 #
 # Modificar la historia (commits) del repositorio local, por ejemplo para unir
 # (squash) varios commits, o editar (reword) los mensajes, etc.
