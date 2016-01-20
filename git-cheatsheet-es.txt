@@ -32,8 +32,25 @@
 #     Ejemplo: Añadir todos los archivos:
 #         git add *
 #
-# Modificaciones en el repositorio:
-#     git diff
+# Ver modificaciones en los archivos:
+#     git diff [<commit1>|<branch1>] [<commit2>|<branch2>] [--name-only]
+#
+#     Ejemplos:
+#
+#         Ver modificaciones en la rama actual antes de hacer commit:
+#             git diff
+#
+#         Comparar el último commit (HEAD) con el anterior (HEAD^):
+#             git diff HEAD^
+#
+#         Comparar la rama actual con la rama "master":
+#             git diff master
+#
+#         Comparar dos ramas:
+#             git diff <branch1> <branch2>
+#
+#         Comparar los cambios entre una rama local y otra remota:
+#             git diff <rama_local> <repo>/<rama_remota>
 #
 # Commit con mensaje corto (la opción `-a` para añadir los cambios al "index" o
 # "staging area"):
@@ -59,9 +76,6 @@
 # Cambiar de rama:
 #     git checkout <nombre_rama>
 #
-# Comparar dos ramas:
-#     git diff <rama1> <rama2>
-#
 # Incorporar (fusionar) una rama en la rama actual:
 #     git merge <nombre_rama>
 #
@@ -74,12 +88,6 @@
 # Traer los cambios de todas las ramas remotas, sin actualizar ninguna rama
 # local:
 #     git fetch --all
-#
-# Comparar los cambios entre una rama local y otra remota:
-#     git diff <rama_local> <repo>/<rama_remota>
-#
-#     Ejemplo:
-#         git diff master origin/master
 #
 # Incorporar (fusionar) una rama remota en la rama actual:
 #     git merge <rama_remota>
