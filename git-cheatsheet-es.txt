@@ -52,6 +52,9 @@
 #         Comparar los cambios entre una rama local y otra remota:
 #             git diff <rama_local> <repo>/<rama_remota>
 #
+#         Ver todos los archivos eliminados hasta la fecha:
+#             git log --diff-filter=D --summary
+#
 # Commit con mensaje corto (la opción `-a` para añadir los cambios al "index" o
 # "staging area"):
 #     git commit -a -m "Resumen del commit"
@@ -281,10 +284,19 @@
 # última versión del repositorio:
 #     git stash
 #
+# Ver las modificaciones de un stash:
+#     git stash show -p stash@{<stash_id>}
+#
+#     Ejemplo:
+#         git stash show -p stash@{0}
+#
 # Recuperar los cambios temporalmente guardados:
 #     git stash apply
 #
-# Limpiar el "stash":
+# Listar los "stash":
+#     git stash list
+#
+# Limpiar los "stash":
 #     git stash clear
 #
 # Aplicar los cambios introducidos por uno o varios commits creando un
