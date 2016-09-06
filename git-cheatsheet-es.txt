@@ -66,6 +66,12 @@
 # Historial de commits:
 #     git log
 #
+# Inspeccionar cambios en un rango determinado de líneas de un archivo:
+#     git blame -L <line_number>,+<length> <file_path>
+#
+#     Ejemplo:
+#         git blame -L 123,+20 foo/bar.py
+#
 # Eliminar archivos del repositorio:
 #     git rm <file1> <file2>
 #
@@ -242,12 +248,11 @@
 #     git reflog
 #
 #     Una vez identificado el commit a recuperar, hacer:
-#         git reset --hard <HASH>
+#         git cherry-pick <HASH>
 #
 #     Por defecto reflog almacena los commits de los últimos 90 días. A partir
-#     de esa fecha git-gc eliminará los commits de más de 90 días.
-#
-#     Podemos modificar la duración con:
+#     de esa fecha git-gc eliminará los commits de más de 90 días. Podemos
+#     modificar la duración con:
 #         git config --add gc.reflogexpire [30.days | 30.minutes | 30.seconds]
 #
 #
@@ -380,8 +385,8 @@
 #     git clone <user>@<host>:<ruta_repo_remoto>
 #
 #
-# `.gitignore` (para ignorar archivos en Git)
-# ===========================================
+# .gitignore (para ignorar archivos en Git)
+# =========================================
 #
 # Los archivos sólo se ignoran si previamente no se han añadido al
 # "repositorio", es decir, deben aparecer como "untracked files".
@@ -401,3 +406,17 @@
 #
 #    # Ignorar el directorio "tmp"
 #    tmp
+#
+#
+# Gitk (GUI para Git)
+# ===================
+#
+# Mostrar todas las ramas:
+#     gitk --all
+#
+# Inspeccionar cambios en un rango determinado de líneas de un archivo:
+#     gitk -L<line_number>,+<length>:<file_path>
+#
+#     Ejemplo:
+#         gitk -L123,+20:foo/bar.py
+
