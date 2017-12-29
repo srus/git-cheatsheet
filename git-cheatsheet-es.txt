@@ -155,8 +155,17 @@
 # Crear una rama que apunte a otra remota y cambiarse a esta inmediatamente:
 #     git checkout -b <nombre_rama> <repo>/<nombre_rama>
 #
-# Incorporar (fusionar) una rama en la actual:
+# Hacer que la rama actual apunte a otra remota:
+#     git branch -u <repo>/<nombre_rama>
+#
+# Incorporar (fusionar) una rama en la actual. Si las ramas han divergido la
+# historia de ambas ramas se mantendrán intactas: visualmente se puede ver cómo
+# ambas ramas se unen en un nuevo commit creado por Git:
 #     git merge <nombre_rama>
+#
+# Incorporar una rama B en la actual A re-aplicando los cambios introducidos por
+# la rama B. Git modifica la historia de la rama A:
+#     git rebase <nombre_rama>
 #
 # Enviar (fusionar) la rama actual en otra de un repositorio remoto (o crear
 # una nueva rama remota en caso de que no existiera):
@@ -281,9 +290,15 @@
 #         > git commit -m "Cambios 2"  # commit del resto de cambios
 #
 # Modificar la historia (commits) del repositorio local, por ejemplo para unir
-# (squash) varios commits, o editar (reword) los mensajes, etc.
+# (squash) varios commits, editarlos (edit) o reescribir (reword) el mensaje.
 # ¡Sólo debe usarse `rebase` si aún no se ha hecho push al repositorio remoto!
 #     git rebase -i <HASH>
+#
+#     Ejemplo: Cambiar la fecha de un commit:
+#         git rebase -i 2dfd1127680
+#         [marcar el commit para editar (e - edit)]
+#         git commit --amend --date='Mon Mar 20 13:10:06 2017 +0100'
+#         git rebase --continue
 #
 # Guardar temporalmente los cambios actuales sin hacer commit y volver a la
 # última versión del repositorio:
