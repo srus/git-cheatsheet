@@ -111,12 +111,18 @@
 #     "master" del repositorio remoto "origin":
 #         git pull origin master
 #
-# Enviar (fusionar) la rama actual en otra de un repositorio remoto (creando
+# Fusionar la rama actual en otra de un repositorio remoto (creando
 # una nueva rama remota en caso de que no existiera):
-#     git push <repo> <nombre_rama>
+#     git push <repo> <rama_remota>
 #
 #     Ejemplo:
 #         git push origin master
+#
+# Fusionar la rama local especificada en otra rama remota:
+#     git push <repo> <rama_local>:<rama_remota>
+#
+#     Ejemplo:
+#         git push origin master:master
 #
 # Añadir un repositorio remoto:
 #     git remote add <repo> <user>@<host>:<ruta_repo>
