@@ -66,6 +66,9 @@
 # Historial de commits:
 #     git log
 #
+# Comparar dos ramas imprimiendo sólo la cabecera del mensaje del commit:
+#     git log --oneline [--graph] <rama1>..<rama2>
+#
 # Inspeccionar cambios en un rango determinado de líneas de un archivo:
 #     git blame -L <line_number>,+<length> <file_path>
 #
@@ -328,6 +331,10 @@
 # Aplicar los cambios introducidos por uno o varios commits creando un
 # nuevo commit:
 #     git cherry-pick <HASH>
+#     
+#     Ejemplos:
+#         git cherry-pick 2ja45fj3
+#         git cherry-pick 34jga83...54as5gs7
 #
 # Crear "parches" con los cambios en la rama actual respecto de <ID>, donde
 # <ID> puede ser un commit o el nombre de una rama. Esto genera un archivo
