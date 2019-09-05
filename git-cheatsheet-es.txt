@@ -243,7 +243,7 @@
 # ID de los commits:
 #     git revert --no-commit HEAD~3..HEAD
 #
-# Descartar cambios y volver a una versión concreta de un archivo:
+# Volver a una versión concreta de un archivo:
 #     git checkout <HASH> <ruta_archivo>
 #
 #     Ejemplos:
@@ -252,7 +252,7 @@
 #         git checkout HEAD^ src/foobar.txt   # penúltima versión
 #         git checkout 123456 src/foobar.txt  # versión con commit 123456
 #
-# Descartar todos los cambios y volver a una versión concreta del repositorio:
+# Volver a una versión concreta del repositorio:
 #     git reset --hard <HASH>
 #
 #     ¡Cuidado! ¡Esto elimina los commits más recientes!
@@ -331,7 +331,7 @@
 # Aplicar los cambios introducidos por uno o varios commits creando un
 # nuevo commit:
 #     git cherry-pick <HASH>
-#     
+#
 #     Ejemplos:
 #         git cherry-pick 2ja45fj3
 #         git cherry-pick 34jga83...54as5gs7
