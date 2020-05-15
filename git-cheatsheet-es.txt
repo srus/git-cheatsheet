@@ -336,6 +336,13 @@
 #         git cherry-pick 2ja45fj3
 #         git cherry-pick 34jga83...54as5gs7
 #
+#
+# Crear un único parche con todos los cambios en la rama actual respecto a otra:
+#     git diff <rama> > patch.diff
+#
+# Aplicar cambios de un parche en el index:
+#     git patch <parche>
+#
 # Crear "parches" con los cambios en la rama actual respecto de <ID>, donde
 # <ID> puede ser un commit o el nombre de una rama. Esto genera un archivo
 # "patch" por cada commit, con el formato 00XX-<mensaje_commit>.patch:
