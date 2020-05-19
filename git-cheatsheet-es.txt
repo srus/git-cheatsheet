@@ -172,9 +172,16 @@
 # ambas ramas se unen en un nuevo commit creado por Git:
 #     git merge <nombre_rama>
 #
-# Incorporar una rama B en la actual A re-aplicando los cambios introducidos por
-# la rama B. Git modifica la historia de la rama A:
+# Fusionar una rama en la actual incorporando los cambios en un solo commit:
+#     git merge --squash <nombre_rama>
+#     git commit [-c <commit_id>]
+#
+# Incorporar una rama A en la actual B re-aplicando los cambios introducidos por
+# la rama B respecto a A. Git modifica la historia de la rama B:
 #     git rebase <nombre_rama>
+#
+#     Nota:
+#     Los commits introducidos en B por `git merge A` desaparecen.
 #
 # Enviar (fusionar) la rama actual en otra de un repositorio remoto (o crear
 # una nueva rama remota en caso de que no existiera):
@@ -276,6 +283,9 @@
 #
 # Manipulando commits
 # ===================
+#
+# Commit reutilizando el mensaje de otro commit:
+#     git commit -c <commit_id>
 #
 # Modificar el mensaje del último commit:
 #     git commit --amend
