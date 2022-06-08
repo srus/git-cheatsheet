@@ -52,9 +52,6 @@
 #         Comparar los cambios entre una rama local y otra remota:
 #             git diff <rama_local> <repo>/<rama_remota>
 #
-#         Ver todos los archivos eliminados hasta la fecha:
-#             git log --diff-filter=D --summary
-#
 # Commit con mensaje corto (la opción `-a` para añadir los cambios al "index" o
 # "staging area"):
 #     git commit -a -m "Resumen del commit"
@@ -68,6 +65,9 @@
 #
 # Comparar dos ramas imprimiendo sólo la cabecera del mensaje del commit:
 #     git log --oneline [--graph] <rama1>..<rama2>
+#
+# Filtrar historial de commit mostrando sólo aquellos con archivos eliminados:
+#     git log --diff-filter=D --summary
 #
 # Inspeccionar cambios en un rango determinado de líneas de un archivo:
 #     git blame -L <line_number>,+<length> <file_path>
@@ -127,6 +127,12 @@
 #     Ejemplo:
 #         git push origin master:master
 #
+# Info de los repositorios remotos:
+#     git remote -v
+#
+# Info detallada de un repositorio remoto:
+#     git remote show <repo>
+#
 # Añadir un repositorio remoto:
 #     git remote add <repo> <user>@<host>:<ruta_repo>
 #
@@ -139,11 +145,8 @@
 # Renombrar un repositorio remoto:
 #     git remote rename <nombre_actual> <nombre_nuevo>
 #
-# Info de los repositorios remotos:
-#     git remote -v
-#
-# Info detallada de un repositorio remoto:
-#     git remote show <repo>
+# Cambiar URL de un repositorio remoto:
+#     git remote set-url <repo_name> <repo_url>
 #
 #
 # Ramas
@@ -290,6 +293,9 @@
 # Modificar el mensaje del último commit:
 #     git commit --amend
 #
+# Reset del author en el mensaje del último commit:
+#    git commit --amend --reset-author
+#
 # Commit con mensaje corto saltándose el hook "pre-commit":
 #     git commit -am "mensaje" --no-verify
 #
@@ -338,20 +344,26 @@
 # Limpiar los "stash":
 #     git stash clear
 #
-# Aplicar los cambios introducidos por uno o varios commits creando un
-# nuevo commit:
-#     git cherry-pick <HASH>
+# Aplicar los cambios introducidos por uno o varios commits creando nuevos
+# commits:
+#     git cherry-pick <ID>
 #
 #     Ejemplos:
 #         git cherry-pick 2ja45fj3
 #         git cherry-pick 34jga83...54as5gs7
+#         git cherry-pick HEAD..foobar
 #
+#     Con la opción -n sólo aplica los cambios en el index, requiriendo un
+#     commit manual. Esto es útil para crear un único nuevo commit con todos los
+#     cambios introducidos por varios commits (por ejemplo, de una rama):
+#
+#         git cherry-pick -n HEAD..foobar
 #
 # Crear un único parche con todos los cambios en la rama actual respecto a otra:
 #     git diff <rama> > patch.diff
 #
 # Aplicar cambios de un parche en el index:
-#     git patch <parche>
+#     git apply <parche>
 #
 # Crear "parches" con los cambios en la rama actual respecto de <ID>, donde
 # <ID> puede ser un commit o el nombre de una rama. Esto genera un archivo
@@ -376,7 +388,7 @@
 #     git push <repo> --tags
 #
 # Eliminar una etiqueta en el repositorio remoto:
-# git push <repo> :refs/tags/<nombre_etiqueta>
+#     git push --delete <repo> <nombre_etiqueta>
 #
 #
 # Submódulos
