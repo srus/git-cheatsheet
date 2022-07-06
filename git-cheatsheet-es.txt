@@ -435,11 +435,11 @@
 # Configuración de un repositorio remoto privado (acceso vía SSH)
 # ===============================================================
 #
-# Situarse en el directorio del proyecto y poner:
-#     git clone --bare . <ruta_repo_remoto>
+# Crear la copia bare del repositorio:
+#     git clone --bare <repo> <repo.git>
 #
 # A partir de aquí el proyecto se podrá descargar con:
-#     git clone <user>@<host>:<ruta_repo_remoto>
+#     git clone <user>@<host>:<ruta_repo.git>
 #
 #
 # .gitignore (para ignorar archivos en Git)
