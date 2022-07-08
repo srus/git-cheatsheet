@@ -148,6 +148,12 @@
 # Cambiar URL de un repositorio remoto:
 #     git remote set-url <repo_name> <repo_url>
 #
+# Agrupar varios repositorios remotos bajo un mismo nombre para actualizarlos
+# todos con un único push:
+#     git remote add <name> <repo1_url>
+#     git remote set-url --all --push <name> <repo2_url>
+#     git remote set-url --all --push <name> <repo3_url>
+#
 #
 # Ramas
 # =====
@@ -432,14 +438,25 @@
 #     git config [--global] alias.supdate 'submodule update --remote --merge'
 #
 #
-# Configuración de un repositorio remoto privado (acceso vía SSH)
-# ===============================================================
+# Repositorios bare
+# =================
 #
-# Crear la copia bare del repositorio:
+# Crear un repositorio bare:
 #     git clone --bare <repo> <repo.git>
 #
-# A partir de aquí el proyecto se podrá descargar con:
-#     git clone <user>@<host>:<ruta_repo.git>
+# Añadir un working tree (worktree) a un repositorio bare:
+#     git worktree add <worktree_path> <branch_name>
+#
+#     Nota:
+#     Git permite enlazar varios worktree a un mismo repositorio, cada uno
+#     asociado a una rama distinta.
+#
+# Cambiar la rama asociada a un worktree en un repositorio bare:
+#     git --work-tree=<worktree_path> checkout --force --ignore-other-worktrees <branch_name>
+#
+#     Nota:
+#     Por defecto sólo puede haber un worktree asociado a cada rama, pero esta
+#     restricción se puede ignorar con la opción '--ignore-other-worktrees'.
 #
 #
 # .gitignore (para ignorar archivos en Git)
