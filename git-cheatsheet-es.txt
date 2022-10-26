@@ -69,6 +69,18 @@
 # Filtrar historial de commit mostrando sólo aquellos con archivos eliminados:
 #     git log --diff-filter=D --summary
 #
+# Ver commits que están en una rama y no en otra:
+#     git log <rama1> ^<rama2>
+#
+#     Notación alternativa:
+#         git log <rama2>..<rama1>
+#
+#     También se pueden omitir los merges:
+#         git log --no-merges <rama1> ^<rama2>
+#
+#     Nota:
+#         También se pueden ver con Gitk usando los mismos parámetros.
+#
 # Inspeccionar cambios en un rango determinado de líneas de un archivo:
 #     git blame -L <line_number>,+<length> <file_path>
 #
