@@ -87,6 +87,15 @@
 #     Ejemplo:
 #         git blame -L 123,+20 foo/bar.py
 #
+# Buscar texto en archivos del repositorio:
+#     git grep <pattern> [<commit>]
+#
+#     Ejemplos:
+#         git grep 'FooBar'
+#         git grep 'FooBar' master
+#         git grep 'FooBar' rama1
+#         git grep -i 'foobar' 1234556789
+#
 # Eliminar archivos del repositorio:
 #     git rm <file1> <file2>
 #
