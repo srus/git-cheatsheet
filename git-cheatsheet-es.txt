@@ -81,6 +81,21 @@
 #     Nota:
 #         También se pueden ver con Gitk usando los mismos parámetros.
 #
+# Ver todos los cambios introducidos en un determinado commit:
+#     git show [<commit>]
+#
+#     Ejemplos:
+#         git show
+#         git show HEAD
+#         git show 123456
+#
+# Ver el contenido de un archivo tal y como se vería en un determinado commit:
+#     git show <commit>:<file>
+#
+#     Ejemplos:
+#         git show master:path/to/file
+#         git show foo_branch:path/to/file
+#
 # Inspeccionar cambios en un rango determinado de líneas de un archivo:
 #     git blame -L <line_number>,+<length> <file_path>
 #
