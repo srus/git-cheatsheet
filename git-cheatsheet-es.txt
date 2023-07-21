@@ -82,12 +82,15 @@
 #         También se pueden ver con Gitk usando los mismos parámetros.
 #
 # Ver todos los cambios introducidos en un determinado commit:
-#     git show [<commit>]
+#     git show [<commit>] [--name-only]
+#
+#     Con `--name-only` sólo se listan los archivos modificados.
 #
 #     Ejemplos:
 #         git show
 #         git show HEAD
 #         git show 123456
+#         git show --name-only 123456
 #
 # Ver el contenido de un archivo tal y como se vería en un determinado commit:
 #     git show <commit>:<file>
