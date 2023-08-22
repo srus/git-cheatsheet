@@ -423,6 +423,9 @@
 # Etiquetas (tags)
 # ================
 #
+# Listar etiquetas:
+#    git tag
+#
 # Etiquetar un commit:
 #     git tag <nombre_etiqueta>
 #
